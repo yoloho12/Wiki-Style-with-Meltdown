@@ -1,0 +1,26 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+Encyclopedia
+{% endblock %}
+
+{% block body %}
+<div class="ml-5 ">
+    <a><u><h5>Create New Page</h5></u></a>
+</div>
+
+<form class="ml-4 mb-4 col-10" action="{% url 'create' %}" method="post">
+    {% csrf_token %}
+    {% if error %}
+    <div style="font-size: smaller; color: crimson">{{error}}</div>
+    {% endif %}
+    <div>
+        {{contentForm}}
+    </div>
+    <div>
+        <button type="submit" name="submit">Submit</button>
+    </div>
+
+</form>
+
+{% endblock %}

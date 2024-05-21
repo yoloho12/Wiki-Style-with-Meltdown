@@ -1,0 +1,30 @@
+{% extends "encyclopedia/layout.html" %}
+
+
+{% block title %}
+Encyclopedia
+{% endblock %}
+
+{% block body %}
+
+{% if entry is None %}
+    <h1>404 requested page was not found!</h1> <br><h3>please check ur title name!</h3>
+{% else %}
+<div class="form-inline">
+
+    <div>
+        <a><b><u>Title : {{title}}</u></b></a>
+    </div>
+    <div class="ml-3">
+        <form action="{% url 'edit' %}" method="get">
+            <input type="hidden" name="title" value="{{title}}">
+            <input type="submit" value="Edit">
+        </form>
+    </div>
+
+</div>
+
+<p> {{entry|safe}}</p>
+{% endif %}
+
+{% endblock %}
